@@ -1,10 +1,15 @@
 import * as S from "./style";
 
-export const SectionItem = () => {
+interface SectionItemProps {
+  label: string;
+  value: string | number;
+}
+
+export const SectionItem = ({ label, value }: SectionItemProps) => {
   return (
     <S.SectionItemBlock>
-      <S.SectionItemLabel>차종</S.SectionItemLabel>
-      <S.SectionItemValue>중형</S.SectionItemValue>
+      <S.SectionItemLabel>{label}</S.SectionItemLabel>
+      <S.SectionItemValue>{value}</S.SectionItemValue>
     </S.SectionItemBlock>
   );
 };
