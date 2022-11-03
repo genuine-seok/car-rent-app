@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 
-import { fuelMap, segmentMap } from "../../constant";
 import { CarDataType } from "../../types";
-import { getFormattedPrice, isNewCar } from "../../utils";
+import {
+  getCategoryBySegment,
+  getStringByFuelType,
+  isNewCar,
+  priceByMonth,
+} from "../../utils";
 import { Chip } from "../common";
 import * as S from "./style";
 
@@ -12,8 +16,10 @@ interface ItemCardProps {
 
 export const ItemCard = ({ carData }: ItemCardProps) => {
   const { id, amount, attribute, createdAt } = carData;
-
   const { brand, name, segment, fuelType, imageUrl } = attribute;
+  const segmentAndFuelType = `${getCategoryBySegment(
+    segment
+  )} / ${getStringByFuelType(fuelType)}`;
 
   return (
     <Link to={`/${id}`} state={{ carData }}>
@@ -21,10 +27,8 @@ export const ItemCard = ({ carData }: ItemCardProps) => {
         <S.ItemCardTextBlock>
           <S.ItemCardTitle>{brand}</S.ItemCardTitle>
           <S.ItemCardTitle>{name}</S.ItemCardTitle>
-          <S.ItemCardDescription>{`${segmentMap[segment]} / ${fuelMap[fuelType]}`}</S.ItemCardDescription>
-          <S.ItemCardDescription>
-            월 ${getFormattedPrice(amount)}원 부터
-          </S.ItemCardDescription>
+          <S.ItemCardDescription>{segmentAndFuelType}</S.ItemCardDescription>
+          <S.ItemCardDescription>{priceByMonth(amount)}</S.ItemCardDescription>
         </S.ItemCardTextBlock>
         <S.ItemCardNotification>
           {isNewCar(createdAt) && <Chip type="notification">신규</Chip>}

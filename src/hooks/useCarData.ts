@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { QueryKey, useQuery, UseQueryOptions } from "react-query";
+import { useQuery } from "react-query";
 
 import CarService from "../apis/CarService";
 import { CarDataType, CategoryParam } from "../types";

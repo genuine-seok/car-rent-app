@@ -1,6 +1,6 @@
-import { categoryMap } from "../../../constant";
 import { useCarData } from "../../../hooks/useCarData";
 import { CarDataType, CategoryType } from "../../../types";
+import { getSegmentByCategory } from "../../../utils";
 import { ItemList } from "../../Item";
 import { Error } from "../Error/Error";
 import { Loading } from "../Loading/Loading";
@@ -12,7 +12,7 @@ interface ISlide {
 
 // TODO: 슬라이딩 인터랙션 구현
 export const Slide = ({ category }: ISlide) => {
-  const segmentParams = categoryMap[category];
+  const segmentParams = getSegmentByCategory(category);
 
   const { isLoading, isError, data, error, isFetching } =
     useCarData(segmentParams);

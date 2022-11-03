@@ -1,6 +1,10 @@
-import { fuelMap, segmentMap } from "../../constant";
 import { CarDataType } from "../../types";
-import { getFormattedPrice, getStartDate } from "../../utils";
+import {
+  getCategoryBySegment,
+  getStartDate,
+  getStringByFuelType,
+  priceByMonth,
+} from "../../utils";
 import { Section } from "../common";
 import { SectionItem } from "../common/SectionItem/SectionItem";
 import * as S from "./style";
@@ -22,13 +26,13 @@ const ItemDetail = ({ carData }: ItemDetailProps) => {
           <S.ItemDetailSubTitle>{brand}</S.ItemDetailSubTitle>
           <S.ItemDetailTitle>{name}</S.ItemDetailTitle>
           <S.ItemDetailDescription>
-            월 ${getFormattedPrice(amount)}원
+            {priceByMonth(amount)}
           </S.ItemDetailDescription>
         </S.ItemDetailTitleBlock>
       </S.ItemDetailMain>
       <Section name="차량정보" />
-      <SectionItem label="차종" value={segmentMap[segment]} />
-      <SectionItem label="연료" value={fuelMap[fuelType]} />
+      <SectionItem label="차종" value={getCategoryBySegment(segment)} />
+      <SectionItem label="연료" value={getStringByFuelType(fuelType)} />
       <SectionItem label="이용 가능일" value={getStartDate(startDate)} />
       {insurance && (
         <>
