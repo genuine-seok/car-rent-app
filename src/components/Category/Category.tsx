@@ -1,5 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
 
+import { category } from "../../constant";
 import { ItemGroup as CategoryGroup } from "../../contexts/ItemGroupContext";
 import { CategoryItem } from "./CategoryItem";
 import * as S from "./style";
@@ -19,11 +20,9 @@ export const Category = ({
     <CategoryGroup activeId={activeId} onSelect={setActiveId}>
       <S.CategoryBlock>
         {children}
-        {/* TODO: Chip & id를 동적으로 생성 */}
-        <CategoryItem value="전체" id={0} />
-        <CategoryItem value="대형" id={1} />
-        <CategoryItem value="중형" id={2} />
-        <CategoryItem value="소형" id={3} />
+        {category.map((item, idx) => (
+          <CategoryItem value={item} key={item} id={idx} />
+        ))}
       </S.CategoryBlock>
     </CategoryGroup>
   );

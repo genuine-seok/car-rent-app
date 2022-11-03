@@ -1,21 +1,22 @@
-import { ReactNode } from "react";
-
+import { CarDataType } from "../../types";
+import { NoItem } from "../common";
 import { ItemCard } from "./ItemCard";
 import * as S from "./style";
 
 interface ItemListProps {
-  children?: ReactNode;
+  items: CarDataType[];
 }
 
-export const ItemList = ({ children }: ItemListProps) => {
+export const ItemList = ({ items }: ItemListProps) => {
+  const isCarData = () => items.length;
+
   return (
     <S.ItemListContainer>
-      <ItemCard />
-      <ItemCard />
-      <ItemCard />
-      <ItemCard />
-      <ItemCard />
-      <ItemCard />
+      {isCarData() ? (
+        items.map((item) => <ItemCard key={item.id} carData={item} />)
+      ) : (
+        <NoItem />
+      )}
     </S.ItemListContainer>
   );
 };
