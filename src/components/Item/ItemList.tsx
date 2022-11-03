@@ -1,5 +1,5 @@
 import { CarDataType } from "../../types";
-import { NoItem } from "../common";
+import { Empty } from "../common";
 import { ItemCard } from "./ItemCard";
 import * as S from "./style";
 
@@ -8,14 +8,14 @@ interface ItemListProps {
 }
 
 export const ItemList = ({ items }: ItemListProps) => {
-  const isCarData = () => items.length;
+  const isCarData = items.length;
 
   return (
     <S.ItemListContainer>
-      {isCarData() ? (
+      {isCarData ? (
         items.map((item) => <ItemCard key={item.id} carData={item} />)
       ) : (
-        <NoItem />
+        <Empty />
       )}
     </S.ItemListContainer>
   );

@@ -13,7 +13,7 @@ const CarDetail = () => {
   return (
     <>
       {/* <Head carData={carData} /> */}
-      <Header>차량상세</Header>
+      <Header isPrevious>차량상세</Header>
       <ItemDetail carData={carData} />
     </>
   );

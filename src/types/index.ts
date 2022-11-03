@@ -16,10 +16,12 @@ export type AttributeType = {
   fuelType: FuelENGType;
   imageUrl: string;
 };
+
 export type InsuranceType = {
   name: string;
   description: string;
 };
+
 export type AdditionalProductsType = {
   name: string;
   amount: number;
