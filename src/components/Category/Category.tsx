@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
 
-import { category } from "../../constant";
+import { CATEGORY_LIST } from "../../constant";
 import { ItemGroup as CategoryGroup } from "../../contexts/ItemGroupContext";
 import { CategoryItem } from "./CategoryItem";
 import * as S from "./style";
@@ -20,7 +20,7 @@ export const Category = ({
     <CategoryGroup activeId={activeId} onSelect={setActiveId}>
       <S.CategoryBlock>
         {children}
-        {category.map((item, idx) => (
+        {CATEGORY_LIST.map((item, idx) => (
           <CategoryItem value={item} key={item} id={idx} />
         ))}
       </S.CategoryBlock>

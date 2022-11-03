@@ -2,11 +2,15 @@ import { useState } from "react";
 
 import { Category } from "../components/Category";
 import { Header, Slide } from "../components/common";
-import { category } from "../constant";
+import { CATEGORY_LIST } from "../constant";
+
+const slides = CATEGORY_LIST.map((item) => (
+  <Slide key={item} category={item} />
+));
+const displaySlideByCategory = (activeId: number) => slides[activeId];
 
 const Home = () => {
   const [activeId, setActiveId] = useState(0);
-  const slide = category.map((item) => <Slide key={item} category={item} />);
 
   return (
     <>
@@ -14,7 +18,7 @@ const Home = () => {
       {/* TODO: SEO 적용하기 */}
       {/* <Head carData={carData} /> */}
       <Category activeId={activeId} setActiveId={setActiveId} />
-      {slide[activeId]}
+      {displaySlideByCategory(activeId)}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { CategoryType } from "../types";
 
-export const category: Array<CategoryType> = [
+export const CATEGORY_LIST: Array<CategoryType> = [
   "전체",
   "소형",
   "중형",
