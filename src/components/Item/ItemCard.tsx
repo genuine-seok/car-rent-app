@@ -1,4 +1,4 @@
-import Chip from "../common/Chip/Chip";
+import { Chip } from "../common";
 import * as S from "./style";
 
 const isNew = (num: number) => {
@@ -15,7 +15,7 @@ export const ItemCard = () => {
         <S.ItemCardDescription>월 amount원 부터</S.ItemCardDescription>
       </S.ItemCardTextBlock>
       <S.ItemCardNotification>
-        {isNew(1) && <Chip value="신규" type="notification" />}
+        {isNew(1) && <Chip type="notification">신규</Chip>}
       </S.ItemCardNotification>
       <S.ItemCardImage />
     </S.ItemCardContainer>

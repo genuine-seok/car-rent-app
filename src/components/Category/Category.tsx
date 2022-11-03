@@ -1,20 +1,30 @@
-import { ReactNode } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 
-import Chip from "../common/Chip/Chip";
+import { ItemGroup as CategoryGroup } from "../../contexts/ItemGroupContext";
+import { CategoryItem } from "./CategoryItem";
 import * as S from "./style";
 
 type CategoryProps = {
+  activeId: number;
   children?: ReactNode;
+  setActiveId: Dispatch<SetStateAction<number>>;
 };
 
-export const Category = ({ children }: CategoryProps) => {
+export const Category = ({
+  activeId,
+  children,
+  setActiveId,
+}: CategoryProps) => {
   return (
-    <S.CategoryBlock>
-      {children}
-      <Chip value="전체" isActive />
-      <Chip value="대형" isActive={false} />
-      <Chip value="중형" isActive={false} />
-      <Chip value="소형" isActive={false} />
-    </S.CategoryBlock>
+    <CategoryGroup activeId={activeId} onSelect={setActiveId}>
+      <S.CategoryBlock>
+        {children}
+        {/* TODO: Chip & id를 동적으로 생성 */}
+        <CategoryItem value="전체" id={0} />
+        <CategoryItem value="대형" id={1} />
+        <CategoryItem value="중형" id={2} />
+        <CategoryItem value="소형" id={3} />
+      </S.CategoryBlock>
+    </CategoryGroup>
   );
 };

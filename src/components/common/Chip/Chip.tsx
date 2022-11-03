@@ -1,19 +1,19 @@
+import { ReactNode } from "react";
+
 import * as S from "./style";
 
 export type ChipType = "button" | "notification";
 
 interface IChip {
-  value: string;
+  children: ReactNode;
   isActive?: boolean;
   type?: ChipType;
 }
 
-const Chip = ({ value, isActive = false, type = "button" }: IChip) => {
+export const Chip = ({ children, isActive = true, type = "button" }: IChip) => {
   return (
     <S.ChipBlock isActive={isActive} type={type}>
-      {value}
+      {children}
     </S.ChipBlock>
   );
 };
-
-export default Chip;
