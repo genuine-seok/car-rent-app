@@ -18,25 +18,16 @@ export const ChipBlock = styled.div<IChipBlock>`
   border-radius: 6.2rem;
   cursor: pointer;
 
-  font-size: 1.4rem;
-  line-height: 1.7rem;
-
-  font-weight: 700;
-
-  // TODO: theme으로 동적 리팩토링
-  /* background: ${(props) => (props.isActive ? "black" : "#D9D9D9")};
-  color: ${(props) => (props.isActive ? "white" : "black")}; */
+  ${({ theme }) => theme.typography.h4()}
 
   background: ${(props) => {
-    if (props.type === "notification") {
-      return "#0094FF";
-    }
-    return props.isActive ? "black" : "#D9D9D9";
+    if (props.type === "notification") return props.theme.color.tertiary;
+    return props.isActive
+      ? props.theme.color.black
+      : props.theme.color.secondary;
   }};
   color: ${(props) => {
-    if (props.type === "notification") {
-      return "white";
-    }
-    return props.isActive ? "white" : "black";
+    if (props.type === "notification") return props.theme.color.white;
+    return props.isActive ? props.theme.color.white : props.theme.color.black;
   }};
 `;

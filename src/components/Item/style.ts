@@ -19,30 +19,24 @@ export const ItemCardTextBlock = styled.div`
   flex-direction: column;
 `;
 export const ItemCardTitle = styled.h3`
-  font-size: 1.4rem;
-  font-weight: 700;
-  /* line-height: 1.7rem; */
+  ${({ theme }) => theme.typography.h4()}
 
   & + p {
     margin-top: 8px;
   }
 `;
 export const ItemCardDescription = styled.p`
-  font-size: 1.2rem;
-  font-weight: 500;
-  /* line-height: 1.5rem; */
+  ${({ theme }) => theme.typography.caption()}
 `;
 export const ItemCardImage = styled.img`
   width: 152px;
   height: 80px;
-  background: gray;
 `;
 export const ItemCardNotification = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
 `;
-
 export const ItemDetailContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,7 +44,7 @@ export const ItemDetailContainer = styled.div`
 `;
 export const ItemDetailImage = styled.img`
   height: 205px;
-  background: #d9d9d9;
+  background: ${({ theme }) => theme.color.secondary};
 `;
 export const ItemDetailMain = styled.div`
   width: 100%;
@@ -61,20 +55,15 @@ export const ItemDetailTitleBlock = styled.div`
 `;
 export const ItemDetailSubTitle = styled.h4`
   width: 100%;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 24px;
+  ${({ theme }) => theme.typography.subTitle()}
 `;
 export const ItemDetailTitle = styled.h3`
   width: 100%;
   margin-bottom: 34px;
 
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 29px;
+  ${({ theme }) => theme.typography.title()}
 `;
 export const ItemDetailDescription = styled.p`
-  font-size: 1.7rem;
-  font-weight: 400;
+  ${({ theme }) => theme.typography.body()}
   text-align: right;
 `;

@@ -6,7 +6,7 @@ export const HeaderBlock = styled.header`
   align-items: center;
   position: relative;
   height: 60px;
-  font-size: 1.7rem;
 
+  ${({ theme }) => theme.typography.header()}
   border-bottom: 1px solid black;
 `;

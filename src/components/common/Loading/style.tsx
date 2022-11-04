@@ -6,6 +6,6 @@ export const LoadingBlock = styled.div`
   align-items: center;
 
   padding-top: 28rem;
-  font-size: 1.7rem;
-  font-weight: 700;
+
+  ${({ theme }) => theme.typography.h4()}
 `;

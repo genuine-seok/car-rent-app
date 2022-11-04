@@ -6,7 +6,7 @@ export const ErrorBlock = styled.div`
   align-items: center;
 
   padding-top: 28rem;
-  font-size: 1.7rem;
-  font-weight: 700;
   color: red;
+
+  ${({ theme }) => theme.typography.h3()}
 `;

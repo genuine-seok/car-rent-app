@@ -1,9 +1,11 @@
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 
 import App from "./App";
 import { GlobalStyle } from "./style/GlobalStyle";
+import { theme } from "./style/theme";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
@@ -12,9 +14,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <Router>
-      <GlobalStyle />
-      <App />
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <GlobalStyle />
+        <App />
+      </Router>
+    </ThemeProvider>
   </QueryClientProvider>
 );
