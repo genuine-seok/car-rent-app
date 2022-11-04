@@ -1,44 +1,67 @@
-배포 링크: https://car-list-app.vercel.app/
+# Car Rent App
 
-### 프로젝트 구조
+> B2C 차량대여 서비스 모바일 UI 개발 토이 프로젝트
+>
+> 📆 개발 기간 : 2022.10.31 ~ 2022.11.03
+>
+> [🌍 배포 링크](https://car-list-app.vercel.app/)
+
+<br />
+
+## 프로젝트 설치 및 실행 ✨
+
+```plaintext
+$ git clone https://github.com/genuine-seok/car-rent-app.git // Git 클론
+$ npm install  // 프로젝트 패키지 설치
+$ npm start    // 프로젝트 실행
+```
+
+<br />
+
+## 기술 스택 🛠
+
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=Typescript&logoColor=white"> <img src="https://img.shields.io/badge/ReactQuery-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white"> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"> <img src="https://img.shields.io/badge/axios-5AE9E4?style=for-the-badge&logo=axios&logoColor=white">
+
+<br />
+
+## 프로젝트 구조 🗂
 
 ```bash
 src
- ┣ apis : axios 인스턴스 및 api 서비스
- ┃ ┣ CarService.ts
- ┃ ┗ api.ts
- ┣ components
- ┃ ┗ Category : 카테고리 관련 컴포넌트
- ┃ ┗ Item : 아이템 관련 컴포넌트
- ┃ ┗ common : 공통 컴포넌트
- ┃ ┃ ┗ Chip
- ┃ ┃ ┗ Error
- ┃ ┃ ┗ Head
- ┃ ┃ ┗ Header
- ┃ ┃ ┗ Layout
- ┃ ┃ ┗ Loading
- ┃ ┃ ┗ NoItem
- ┃ ┃ ┗ Section
- ┃ ┃ ┗ SectionItem
- ┃ ┃ ┗ Slide
- ┃ ┃ ┗ index.ts
- ┣ constant : 상수 관리
- ┣ contexts : ItemGroup, Item 관련 상태 관리
- ┃ ┗ ItemGroupContext.tsx
- ┣ hooks : carData api 커스텀 훅
- ┃ ┗ useCarData.ts
- ┣ pages
- ┃ ┣ CarDetail.tsx : 상세 화면
- ┃ ┗ Home.tsx : 메인 화면
- ┣ style
- ┃ ┣ GlobalStyle.ts : 글로벌 스타일
- ┃ ┗ theme.ts : 글로벌 테마
- ┣ types : 공통 타입 정의
- ┣ utils : getFormattedPrice, getStartDate, isNewCar 유틸 함수
+ ┣ apis              // axios 인스턴스 및 api 서비스 (차량 조회)
+ ┣ components        // 공용 컴포넌트
+ ┣ constant          // 상수 관리
+ ┣ contexts          // Context 관리 (카테고리 상태 관리)
+ ┣ hooks             // useCarData 비동기 통신 커스텀 훅
+ ┣ pages             // 페이지 컴포넌트
+ ┣ style             // 전역 스타일, 테마
+ ┣ types             // 공통 타입 관리
+ ┣ utils             // 공통 유틸 함수 (getFormattedPrice, getStartDate, isNewCar)
  ┣ App.tsx
  ┗ index.tsx
-
 ```
+
+<br />
+
+## 핵심 기능 📍
+
+### 1) 차량 목록 조회 기능
+- 카테고리별 차량 목록 필터링 
+- 로딩, 에러, Empty 상태별 렌더링
+- 생성 날짜 1일 이내일 경우 신규 태그 제공
+
+- TODO: 좌우 스와이프 인터랙션 구현
+- TODO: 무한 스크롤링 구현
+
+### 2) 차량 상세정보 조회 기능
+- 뒤로가기 기능 
+
+### 3) SEO
+- TODO: 카카오톡, 페이스북에 공유 시 미리보기 제공
+
+<br />
+
+## 주요 기능 구현 ⚙️
 
 ### 1) Context API를 활용한 카테고리 상태 관리
 : `Context API` 를 이용해 ItemGroup의 active Item 상태를 관리
@@ -121,6 +144,8 @@ export const CategoryItem = ({ value, id }: ICategoryItem) => {
 
 ```
 
+<br />
+
 ### 2) React-Query 를 활용한 서버 데이터 관리
 : `React-Query` 를 이용해 useCarData 커스텀 훅으로 비동기 통신 로직 관리
 - isLoading, isError 여부에 따라 Loading, Error 컴포넌트를 return
@@ -173,6 +198,8 @@ export const Slide = ({ category }: ISlide) => {
   );
 };
 ```
+
+<br />
 
 ### 3) react-router Link를 이용한 차량 상세 정보 state 전달
 : `Link` 컴포넌트를 이용해 아이템 클릭시, 리다이렉팅 및 state 정보 전달
