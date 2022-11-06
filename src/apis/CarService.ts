@@ -1,14 +1,17 @@
-/* eslint-disable class-methods-use-this */
-import { client } from "./api";
+import { AxiosInstance } from "axios";
 
 interface CarService {
-  getCar(params?: any): Promise<any>;
+  getCars(params?: any): Promise<any>;
 }
 
-class CarServiceImp implements CarService {
-  getCar(params?: any): Promise<any> {
-    return client.get("/cars", { params });
+export class CarServiceImp implements CarService {
+  private httpClient;
+
+  constructor(httpClient: AxiosInstance) {
+    this.httpClient = httpClient;
+  }
+
+  getCars(params?: any): Promise<any> {
+    return this.httpClient.get("/cars", { params });
   }
 }
-
-export default new CarServiceImp();
