@@ -1,3 +1,4 @@
+import { CATEGORY_ID } from "../constant";
 import { CategoryType, FuelENGType, SegmentENGType } from "../types";
 
 export const getFormattedPrice = (n: number) => n.toLocaleString("ko-KR");
@@ -58,6 +59,10 @@ export const getSegmentByCategory = (str: CategoryType) => {
       throw new Error("유효하지 않은 Category 타입입니다.");
   }
 };
+
+export const getIdByCategory = (category: CategoryType) =>
+  CATEGORY_ID[category];
+
 export const getStringByFuelType = (str: FuelENGType) => {
   switch (str) {
     case "gasoline":

@@ -1,15 +1,16 @@
-import { useItemGroup } from "../../contexts/ItemGroupContext";
+import { useUI } from "../../contexts/uiContext";
+import { CategoryType } from "../../types";
 import { Chip } from "../common";
 
 interface ICategoryItem {
-  value: string;
-  id: number;
+  value: CategoryType;
 }
 
-export const CategoryItem = ({ value, id }: ICategoryItem) => {
-  const { activeId, onSelect } = useItemGroup();
-  const isActive = activeId === id;
-  const onClick = () => onSelect(id);
+export const CategoryItem = ({ value }: ICategoryItem) => {
+  const { category, setCategory } = useUI();
+
+  const isActive = value === category;
+  const onClick = () => setCategory(value);
 
   return (
     <div onClick={onClick}>

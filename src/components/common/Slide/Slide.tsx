@@ -2,16 +2,14 @@ import { useCarData } from "../../../hooks/useCarData";
 import { CarDataType, CategoryType } from "../../../types";
 import { getSegmentByCategory } from "../../../utils";
 import { ItemList } from "../../Item";
-import { Error } from "../Error/Error";
-import { Loading } from "../Loading/Loading";
+import { Error, Loading } from "..";
 import * as S from "./style";
 
-interface ISlide {
+interface SlideProps {
   category: CategoryType;
 }
 
-// TODO: 슬라이딩 인터랙션 구현
-export const Slide = ({ category }: ISlide) => {
+export const Slide = ({ category }: SlideProps) => {
   const segmentParams = getSegmentByCategory(category);
 
   const { isLoading, isError, data, error, isFetching } =
