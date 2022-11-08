@@ -17,9 +17,9 @@ interface ItemCardProps {
 export const ItemCard = ({ carData }: ItemCardProps) => {
   const { id, amount, attribute, createdAt } = carData;
   const { brand, name, segment, fuelType, imageUrl } = attribute;
-  const segmentAndFuelType = `${getCategoryBySegment(
-    segment
-  )} / ${getStringByFuelType(fuelType)}`;
+
+  const SEGMENT = getCategoryBySegment(segment);
+  const FUEL_TYPE = getStringByFuelType(fuelType);
 
   return (
     <Link to={`/${id}`} state={{ carData }}>
@@ -27,7 +27,7 @@ export const ItemCard = ({ carData }: ItemCardProps) => {
         <S.ItemCardTextBlock>
           <S.ItemCardTitle>{brand}</S.ItemCardTitle>
           <S.ItemCardTitle>{name}</S.ItemCardTitle>
-          <S.ItemCardDescription>{segmentAndFuelType}</S.ItemCardDescription>
+          <S.ItemCardDescription>{`${SEGMENT} / ${FUEL_TYPE}`}</S.ItemCardDescription>
           <S.ItemCardDescription>{priceByMonth(amount)}</S.ItemCardDescription>
         </S.ItemCardTextBlock>
         <S.ItemCardNotification>

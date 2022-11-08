@@ -18,6 +18,7 @@ type CarDataPayload = {
 };
 
 // TODO: FuelType 등 추가적인 파라미터 대응
+// TODO: selector를 활용해서 return 데이터 포맷을 업데이트해주기
 export const useCarData = (segment: CategoryParam) => {
   return useQuery<AxiosResponse<CarDataPayload>, AxiosError>({
     queryKey: [`get-cars-${segment}`, segment],

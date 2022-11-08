@@ -18,6 +18,10 @@ const ItemDetail = ({ carData }: ItemDetailProps) => {
     carData;
   const { brand, name, segment, fuelType, imageUrl } = attribute;
 
+  const SEGMENT = getCategoryBySegment(segment);
+  const FUEL_TYPE = getStringByFuelType(fuelType);
+  const START_DATE = getStartDate(startDate);
+
   return (
     <S.ItemDetailContainer>
       <S.ItemDetailImage src={imageUrl} />
@@ -31,9 +35,9 @@ const ItemDetail = ({ carData }: ItemDetailProps) => {
         </S.ItemDetailTitleBlock>
       </S.ItemDetailMain>
       <Section name="차량정보" />
-      <SectionItem label="차종" value={getCategoryBySegment(segment)} />
-      <SectionItem label="연료" value={getStringByFuelType(fuelType)} />
-      <SectionItem label="이용 가능일" value={getStartDate(startDate)} />
+      <SectionItem label="차종" value={SEGMENT} />
+      <SectionItem label="연료" value={FUEL_TYPE} />
+      <SectionItem label="이용 가능일" value={START_DATE} />
       {insurance && (
         <>
           <Section name="보험" />

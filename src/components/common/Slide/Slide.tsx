@@ -18,6 +18,7 @@ export const Slide = ({ category }: SlideProps) => {
   if (isLoading || isFetching) return <Loading />;
   if (isError) return <Error message={error.message} />;
 
+  // TODO: useCarData에서 selector로 데이터 포매팅
   const items = data?.data.payload as CarDataType[];
 
   return (
